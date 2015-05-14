@@ -766,21 +766,20 @@
 					depth--;
 				}
 
-				id = ($(item).attr(o.attribute || "id")).match(o.expression || (/(.+)[-=_](.+)/));
+				id = ($(item).attr(o.attribute || "id"));
 
 				if (depth === sDepth + 1) {
 					pid = o.rootID;
 				} else {
 					parentItem = ($(item).parent(o.listType)
 											.parent(o.items)
-											.attr(o.attribute || "id"))
-											.match(o.expression || (/(.+)[-=_](.+)/));
-					pid = parentItem[2];
+											.attr(o.attribute || "id"));
+					pid = parentItem;
 				}
 
 				if (id) {
 						ret.push({
-							"item_id": id[2],
+							"item_id": id,
 							"parent_id": pid,
 							"depth": depth,
 							"left": _left,
